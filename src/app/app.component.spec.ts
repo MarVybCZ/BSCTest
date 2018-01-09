@@ -36,7 +36,7 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Notes Editor BSCTest');
   }));
-  it('should read notes and return array langth 2', async(() => {
+  it('custom test: should read notes and return array langth 2', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     
     fixture.componentInstance.getNotes().then((notes: any) => {
