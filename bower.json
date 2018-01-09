@@ -1,0 +1,24 @@
+{
+  "name": "bsctest",
+  "description": "bower package manager for BSCTest application",
+  "main": "bower.json",
+  "authors": [
+    "Martin Vybiral"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "BSCTest"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

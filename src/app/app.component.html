@@ -1,0 +1,46 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>    
+    {{ 'AppTitle' | translate }}
+  </h1>
+  <div class="btn-group">
+    <button *ngFor="let lang of supportedLanguages"
+      (click)="selectLang(lang.value)"
+      class="btn btn-default" [class.btn-primary]="isCurrentLang(lang.value)">
+      {{ lang.display }}
+    </button>
+  </div>
+</div>
+
+<div style="margin:10px;">
+  <table class="table table-striped">
+    <thead>
+      <th class="col-md-2">id</th>
+      <th class="col-md-8">{{ 'NoteTitle' | translate }}</th>
+      <th class="col-md-2"></th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let note of notes">
+        <td class="col-md-2">{{note.id}}</td>
+
+        <td class="col-md-8">{{note.title}}</td>
+        <td class="col-md-2">
+          <button class="btn btn-default" (click)="deleteNote(note)">{{'DeleteBtn' | translate}}</button>
+          <button class="btn btn-default" (click)="editNote(note)">{{'EditBtn' | translate}}</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div style="margin:10px;">  
+  <div class="form-group">
+    <label class="control-label" for="noteId">ID</label>
+    <input class="form-control" type="text" readonly id="noteId" value={{selectedNote.id}}/>
+  </div>
+  <div class="form-group">
+    <label class="control-label" for="noteTitle">{{'NoteTitle' | translate}}</label>
+    <input class="form-control" type="text" id="noteTitle" value={{selectedNote.title}}/>
+  </div>
+  <button class="btn btn-default" (click)="addNote(note)">{{'AddBtn' | translate}}</button>
+  <button class="btn btn-default" (click)="updateNote(note)">{{'UpdateBtn' | translate}}</button>
+</div>
