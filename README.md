@@ -6,6 +6,7 @@
 3. run <code>npm install</code>
 4. run <code>bower install</code> to download bootsrap css
 5. run <code>ng serve</code> to run web app on <a href="http://localhost:9000">http://localhost:9000</a> or run <code>ng serve --open</code> to compile and run directly run the app
+6. run test <code>ng test</code>
 
 <hr />
 
