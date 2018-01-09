@@ -17,7 +17,9 @@ import { Note } from './classes/Note';
 export class AppComponent {
   title = 'app';
 
-  notes: Array<Note> = [];
+  tempNote = new Note();
+
+  notes: Array<Note> = [new Note()];
 
   selectedNote: Note;
 
@@ -28,11 +30,20 @@ export class AppComponent {
 
   constructor(private noteService: NoteService, private _translate: TranslateService) {
 
+    this.tempNote.id = 0;
+    this.tempNote.title = "Loading ...";
+
     this.notes = new Array<Note>();
+
+    this.notes.push(this.tempNote);
 
     this.selectedNote = new Note();
   }
 
+  /**
+   * Insert new note to list
+   * @param note list to insert
+   */
   addNote(note: Note): void {
     note.id = 0;
     this.noteService.setNote(note).then((note: Note)=>{
@@ -41,10 +52,18 @@ export class AppComponent {
     })
   }
 
+  /**
+   * select note for editation
+   * @param note for editation
+   */
   editNote(note: Note): void {
     this.selectedNote = note;
   }
 
+  /**
+   * delete note
+   * @param note 
+   */
   deleteNote(note: Note): void {
     //this.notes.indexOf(note)
     this.notes.splice(this.notes.indexOf(note), 1);
@@ -54,10 +73,17 @@ export class AppComponent {
     }
   }
 
+  /**
+   * update edited note
+   * @param note 
+   */
   updateNote(note: Note): void {
     this.noteService.setNote(note).then(() => { this.getNotes() });
   }
 
+  /**
+   * read notes from server
+   */
   getNotes(): Promise<void> {
     return this.noteService.getNotesList().then((notes) => {
       this.notes = <Array<Note>>notes;
